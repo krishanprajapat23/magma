@@ -50,15 +50,10 @@
 //   ],
 // });
 
+
 {
-  $(document).ready(function () {
-    $(
-      '<div class="back-cursor"><div></div></div>'
-    ).prependTo("body");
-
-
+    document.body.innerHTML += (`<div class="back-cursor"><div></div></div>`);            
     let cursorBg = [...document.querySelectorAll(".back-cursor > div")];
-    // let cursorBg = document.querySelector(".back-cursor > div");
     window.addEventListener("mousemove", function (e) {
       cursorBg.forEach((bg) => {
         bg.style.left = e.clientX + "px";
@@ -68,9 +63,8 @@
     //   cursorBg.style.top = e.clientY + "px";
     });
 
-  });
-
 }
+
 
 // data fn to show copyright year
 document.getElementById("year").innerText = new Date().getFullYear();

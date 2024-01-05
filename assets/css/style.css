@@ -17476,6 +17476,11 @@ select:hover, select:active, select:focus {
   padding-top: 2vw;
   z-index: 2;
 }
+@media (max-width: 991px) {
+  .back-cursor {
+    display: none !important;
+  }
+}
 
 body {
   font-family: "Jost", sans-serif;
@@ -17519,7 +17524,8 @@ body {
 }
 @media (max-width: 567px) {
   .offcanvas .mega-menu-wrapper .mega-menu .nav-link {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    padding: 0.25rem 1rem;
   }
 }
 .offcanvas .mega-menu-wrapper .mega-menu .nav-link:hover {
@@ -17591,11 +17597,6 @@ header .navbar .toggleMenu {
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   transition: background 0.6s, border-color ease-out 0.6s;
 }
-@media (min-width: 991px) {
-  header .navbar .toggleMenu {
-    top: 1.25rem;
-  }
-}
 @media (max-width: 1367px) {
   header .navbar .toggleMenu {
     right: 2rem;
@@ -17615,7 +17616,8 @@ header .navbar .nav-item:first-child {
 }
 @media (max-width: 991px) {
   header .navbar .nav-item:first-child {
-    margin-right: 30px;
+    margin-right: 90px;
+    margin-top: 5px;
   }
 }
 header .navbar .nav-item .nav-link {
