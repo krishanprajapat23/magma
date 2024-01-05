@@ -1,0 +1,256 @@
+@import "all";
+@import "animate.min.css";
+@import "_utility";
+
+body {
+    font-family: $bodyFont;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-style: normal;
+    color: $dark;
+    background-color: $white;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+// offcanvas
+.offcanvas{
+    .btn-close{
+        background: $themeClr;
+        color: $white;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        padding: 8px 16px;
+        border-radius: 100em;
+    }
+    .mega-menu-wrapper {
+        height: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        .mega-menu{
+            .nav-link {
+                padding: 0.5rem 1rem;
+                color: $dark;
+                font-weight: 300;
+                font-size: 3rem;
+                transition: color 0.15s ease,  opacity 0.4s;
+                @media (max-width:991px){
+                    font-size: 2rem;
+                }
+                @media (max-width:567px){
+                    font-size: 1rem;
+                }
+                &:hover{
+                    color: $themeClr;
+                }
+            }
+            // &:hover{
+            //     .nav-link{
+            //         &:not(&:hover){
+            //             opacity: 0.2;
+            //         }
+            //     }
+            // }            
+            &:hover .nav-link:not(.nav-link:hover){
+                opacity: 0.2;                
+            }
+        }
+
+        .social-links{
+            margin-top: 1.5rem;
+            padding: 0.25rem 0.75rem;
+            .social-link{
+                display: inline-block;
+                position: relative;
+                color: $dark;
+                font-size: 0.875rem;
+                font-weight: 400;
+                padding: 0.125rem 0.25rem;
+                transition: color 0.3s ease;
+                &::after{
+                    content: '';
+                    border-bottom: 1px solid $themeClr;
+                    display: block;
+                    width: 100%;
+                    transform: scale(0);
+                    transition: transform 0.3s;
+                }
+                &:hover{
+                    color: $themeClr;
+                    &::after{
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+header {
+    background: transparent;
+    width: 100%;
+    // padding-top: 1rem;
+    // padding-bottom: 1rem;
+    white-space: nowrap;
+    user-select: none;
+    z-index: 99;
+    @include transition(all linear 100ms);
+    // box-shadow: 0 3px 6px rgb(0, 0, 0, 0.07);
+    // position: relative;
+    position: absolute;
+    &.header-fixed {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        @include box-shadow(0px 0px 25px -10px);
+    }
+    .navbar {
+        background-color: transparent;
+        .toggleMenu {
+            position: fixed;
+            // right: 2rem;
+            top: 1rem;
+            z-index: 2;
+            color: $white;
+            border: 1px solid rgba($white, 0.4) !important;
+            transition: background 0.6s, border-color ease-out 0.6s;
+            @media (min-width: 991px) {
+                top: 1.25rem;
+            }
+            @media (max-width: 1367px) {
+                right: 2rem;
+            }
+            &:hover {
+                border-color: $white !important;
+                background: $themeClr !important;
+            }
+        }
+        .nav-item {
+            &:first-child {
+                margin-right: 30px;
+                @media (max-width: 1367px) {
+                    margin-right: 60px;
+                }
+                @media (max-width: 991px) {
+                    margin-right: 30px;
+                }
+            }
+            .nav-link {
+                transition: all 0.3s ease;
+                color: $themeClr;
+                font-size: 1rem;
+                padding: 0.25rem 0.5rem;
+                font-weight: 500;
+                white-space: nowrap;
+                &:hover,
+                &.active,
+                &:active {
+                    &:not(&.dropdown-toggle) {
+                        color: $themeGreen;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page_wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-sec {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .hero-content {
+        max-width: 750px;
+        position: absolute;
+        top: 45%;
+        h1,
+        p {
+            color: $white;
+        }
+        h1 {
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            @media (min-width: 991px) {
+                font-size: 6rem;
+            }
+        }
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@import "_mediaQuery";
+@import "_override";
+
+//back to top
+.progress-wrap {
+    position: fixed;
+    right: 12px;
+    bottom: 25px;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    -webkit-transform: translateY(15px);
+    -moz-transform: translateY(15px);
+    -ms-transform: translateY(15px);
+    -o-transform: translateY(15px);
+    @include box-shadow(inset 0 0 0 2px rgb(75 64 237 / 20%));
+    @include transition(all 200ms linear);
+    &.active-progress {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    &::after {
+        position: absolute;
+        content: "\f077";
+        font-family: "Font Awesome 5 Pro";
+        text-align: center;
+        line-height: 35px;
+        font-size: 17px;
+        color: $themeGreen;
+        left: 0;
+        top: 0;
+        height: 35px;
+        width: 35px;
+        cursor: pointer;
+        display: block;
+        z-index: 1;
+        @include transition(all 200ms linear);
+    }
+    svg.progress-circle path {
+        stroke: $themeGreen;
+        stroke-width: 4;
+        box-sizing: border-box;
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+    }
+}
